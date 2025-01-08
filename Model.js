@@ -42,4 +42,4 @@ class Model {
   }
 }
 const model = new Model();
-model.returnReadFileMenu(3).then((data) => console.log(data));
+module.exports = model;
