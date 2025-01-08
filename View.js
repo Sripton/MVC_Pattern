@@ -18,15 +18,28 @@ class View {
 
   // Метод для отображения выбранной темы
   displayTopic(number) {
-    if (number === 1) {
-      console.log(
-        chalk.yellow("Вы выбрвли тему: "),
-        chalk.bold.green("Ястребы")
-      );
-    } else if (number === 2) {
-      console.log(chalk.yellow("Вы выбрвли тему: "), chalk.bold.green("Выдры"));
-    } else if (number === 3) {
-      console.log(chalk.yellow("Вы выбрвли тему: "), chalk.bold.green("Еноты"));
+    switch (number) {
+      case 1:
+        console.log(
+          chalk.yellow("Вы выбрaли тему: "),
+          chalk.bold.green("Ястребы")
+        );
+        break;
+      case 2:
+        console.log(
+          chalk.yellow("Вы выбрaли тему: "),
+          chalk.bold.green("Выдры")
+        );
+        break;
+      case 3:
+        console.log(
+          chalk.yellow("Вы выбрaли тему: "),
+          chalk.bold.green("Еноты")
+        );
+        break;
+      default:
+        console.log(chalk.red("Некорректный выбор."));
+        break;
     }
   }
 }
