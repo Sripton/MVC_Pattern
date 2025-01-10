@@ -47,6 +47,7 @@ class View {
         break;
     }
     controller.handleUserInput(number).then(() => {
+      // Возвращаем слушатель после завершения работы
       this.setupInputListener();
     });
   }

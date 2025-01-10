@@ -8,6 +8,7 @@ class Controller {
       console.log("Нет доступных вопросов для отображения.");
       return;
     }
+    let count = 0; // для подсчета ко-ва баллов
     for (let i = 0; i < questions.length; i++) {
       if (i % 2 === 0) {
         console.log(
@@ -15,9 +16,16 @@ class Controller {
           chalk.bold.red(`${questions[i]}`)
         );
         const answear = await this.getUserAnswer(); // Ждем ответа от пользователя
-        console.log(chalk.yellow("Ваш ответ"), chalk.bold.green(`${answear}`));
+        let j = i + 1;
+        if (answear === questions[j]) {
+          count++;
+          console.log(chalk.yellow("Вы ответили правильно. "));
+        } else if (answear !== questions[j]) {
+          console.log(chalk.yellow("Вы ответили не правильно. "));
+        }
       }
     }
+    console.log(`Парвильных ответов: `, chalk.bold.green(`${count}`));
   }
 
   getUserAnswer() {
