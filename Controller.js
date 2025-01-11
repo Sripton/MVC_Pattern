@@ -2,6 +2,9 @@ const chalk = require("chalk");
 const model = require("./Model");
 
 class Controller {
+  constructor() {
+    this.array = [];
+  }
   async handleUserInput(number) {
     const questions = await model.returnReadFileMenu(number);
     if (!Array.isArray(questions) || questions.length === 0) {
@@ -19,13 +22,14 @@ class Controller {
         let j = i + 1;
         if (answear === questions[j]) {
           count++;
+          this.array.push(count);
           console.log(chalk.yellow("Вы ответили правильно. "));
         } else if (answear !== questions[j]) {
           console.log(chalk.yellow("Вы ответили не правильно. "));
         }
       }
     }
-    console.log(`Парвильных ответов: `, chalk.bold.green(`${count}`));
+    console.log(`Парвильных ответов: `, chalk.bold.green(`${this.array.length}`));
   }
 
   getUserAnswer() {
